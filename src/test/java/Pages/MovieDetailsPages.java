@@ -20,7 +20,9 @@ public class MovieDetailsPages {
     By homeUiElements = By.xpath("//ul[@class='similar-movies-list-container']/child::*");
     By popularButtonLocator = By.xpath("//a[text()='Popular']");
     By popularOneMovieLocator = By.xpath("//img[contains(@src,'venom')]");
+    By uiElementsinHomeLocator = By.xpath("//div[@class='medium-screen-movie-container']/child::*");
     By popularUiElementsLocator = By.xpath("//ul[@class='similar-movies-list-container']/child::*");
+    By uiElementsInPopularLocator = By.xpath("//div[@class='medium-screen-movie-container']/child::*");
 
     public MovieDetailsPages(WebDriver driver){
         this.driver = driver;
@@ -54,6 +56,11 @@ public class MovieDetailsPages {
             WebElement a = uiElements.get(i);
             Assert.assertTrue(a.isDisplayed(),"Not Displayed");
         }
+        List<WebElement> uiELementsinHome = driver.findElements(uiElementsinHomeLocator);
+        for(int j = 0; j < uiELementsinHome.size(); j++){
+            WebElement b = uiELementsinHome.get(j);
+            Assert.assertTrue(b.isDisplayed(),"Not Displayed");
+        }
         return;
     }
     public void popularMovies(){
@@ -69,6 +76,12 @@ public class MovieDetailsPages {
         for(int i = 0; i < popularUiElements.size(); i++){
             WebElement a = popularUiElements.get(i);
             Assert.assertTrue(a.isDisplayed(),"Not Displayed");
+        }
+        List<WebElement> uiElementsInPopular = driver.findElements(uiElementsInPopularLocator);
+        System.out.println(uiElementsInPopular.size());
+        for(int j = 0; j < uiElementsInPopular.size(); j++){
+            WebElement c = uiElementsInPopular.get(j);
+            Assert.assertTrue(c.isDisplayed(),"Not Displayed");
         }
         return;
     }

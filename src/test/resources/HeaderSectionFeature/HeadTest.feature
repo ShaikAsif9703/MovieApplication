@@ -19,6 +19,10 @@ Feature:
     Given I am on Home
     Then Navigated to popular movies using popular nav link
 
+  Scenario: Navigating to search page
+    Given I am on Home
+    Then Navigating to search page
+
   Scenario: getting account
     Given I am on Home
     Then checking account

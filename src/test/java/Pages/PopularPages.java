@@ -47,6 +47,13 @@ public class PopularPages {
             WebElement b = moviesList.get(i);
             Assert.assertTrue(b.isDisplayed(),"Not Displayed");
         }
+        WebElement movie = moviesList.get(0);
+        movie.click();
+        // System.out.println(driver.getCurrentUrl());
+        String expectedMovieUrl = "https://qamoviesapp.ccbp.tech/movies/320dee56-fdb2-40cf-8df8-92b251bd781f";
+        wait.until(ExpectedConditions.urlToBe(expectedMovieUrl));
+        String currentMovieUrl = driver.getCurrentUrl();
+        Assert.assertEquals(expectedMovieUrl,currentMovieUrl,"URL's do not match");
         return;
     }
 }

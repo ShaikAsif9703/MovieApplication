@@ -51,6 +51,10 @@ public class HeadPageSteps {
     public void account(){
         headDriver.accountElement();
     }
+    @Then("Navigating to search page")
+    public void navigateToSearchPage(){
+        headDriver.searchElement();
+    }
     @After
     public void tearDown(){
         driver.quit();

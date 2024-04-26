@@ -8,3 +8,9 @@ Feature:
     When I click on search logo
     And I entered the movie name
     Then movie list will be displayed
+
+  Scenario: Movies Not Found
+    Given Home page
+    When I click on search logo
+    And I entered the movie name of spiderman
+    Then No movies found should be displayed

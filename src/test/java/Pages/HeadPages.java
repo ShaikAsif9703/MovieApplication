@@ -21,6 +21,7 @@ public class HeadPages {
     By homePageLocator = By.xpath("//a[@class='nav-link active-nav-link']");
     By popularPageLocator = By.xpath("//a[@class='nav-link']");
     By avatarButton = By.className("avatar-img");
+    By searchLogoLocator = By.cssSelector("button[class='search-empty-button']");
 
     public HeadPages(WebDriver driver){
         this.driver = driver;
@@ -86,6 +87,16 @@ public class HeadPages {
         wait.until(ExpectedConditions.urlToBe(expectedAccountUrl));
         String currentAccountUrl = driver.getCurrentUrl();
         Assert.assertEquals(expectedAccountUrl,currentAccountUrl,"URl's do not match");
+        return;
+    }
+    public void searchElement(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(searchLogoLocator));
+        WebElement searchLogo = driver.findElement(searchLogoLocator);
+        searchLogo.click();
+        String expectedSearchPageUrl = "https://qamoviesapp.ccbp.tech/search";
+        wait.until(ExpectedConditions.urlToBe(expectedSearchPageUrl));
+        String currentSearchPageUrl = driver.getCurrentUrl();
+        Assert.assertEquals(expectedSearchPageUrl,currentSearchPageUrl,"URL's do not match");
         return;
     }
 }

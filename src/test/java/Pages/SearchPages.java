@@ -19,6 +19,7 @@ public class SearchPages {
     By inputLocator = By.id("search");
     By searchButtonLocator = By.className("search-button");
     By movieElements = By.xpath("//ul[@class='search-movies-container']/child::*");
+    By noMoviesErrorMessageLocator = By.xpath("//p[@class='not-found-search-paragraph']");
 
     public SearchPages(WebDriver driver){
         this.driver = driver;
@@ -67,6 +68,23 @@ public class SearchPages {
         String expectedUrl = "https://qamoviesapp.ccbp.tech/movies/51b4602f-b0f2-4c81-98e0-a2a409b13926";
         String currentUrl = driver.getCurrentUrl();
         Assert.assertEquals(expectedUrl,currentUrl,"URL's do not match");
+        return;
+    }
+    public void spiderman(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(inputLocator));
+        WebElement search = driver.findElement(inputLocator);
+        search.sendKeys("spiderman");
+        WebElement searchButton = driver.findElement(searchButtonLocator);
+        searchButton.click();
+        return;
+    }
+    public void noMovies(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(noMoviesErrorMessageLocator));
+        WebElement NotFoundMovieLocator = driver.findElement(noMoviesErrorMessageLocator);
+        // System.out.println(NotFoundMovieLocator.getText());
+        String expectedNotMovieFound = "Your search for spiderman did not find any matches.";
+        String currentNotMovieFound = NotFoundMovieLocator.getText();
+        Assert.assertEquals(expectedNotMovieFound,currentNotMovieFound,"Error doesn't match");
         return;
     }
 }

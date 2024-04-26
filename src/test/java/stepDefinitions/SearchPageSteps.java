@@ -37,9 +37,17 @@ public class SearchPageSteps {
     public void enterMovieName(){
         searchDriver.enterName();
     }
+    @And("I entered the movie name of spiderman")
+    public void enterSecondMovieName(){
+        searchDriver.spiderman();
+    }
     @Then("movie list will be displayed")
     public void movieDisplay(){
         searchDriver.noOfElements();
+    }
+    @Then("No movies found should be displayed")
+    public void noMoivesFOund(){
+        searchDriver.noMovies();
     }
     @After
     public void tearDown(){
